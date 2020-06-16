@@ -5,7 +5,6 @@ import Banner from './banner'
 import About from './about'
 import Services from './services';
 import Footer from './footer';
-import { Form } from 'reactstrap';
 import FormContact from './form';
 function App() {
   return (

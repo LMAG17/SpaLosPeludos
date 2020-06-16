@@ -5,8 +5,6 @@ class Banner extends Component {
         return (
             <div id="about">
                 <Container fluid="true" className="pt-5 pb-5 w-75">
-                    .<div class="container-fluid text-center">
-                    </div>
                     <Row className="p-0 m-0 w-100" >
                         <Col xs="12" sm="12" md="6">
                             <Card className="">

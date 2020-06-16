@@ -5,7 +5,8 @@ import {
     CarouselControl,
     CarouselIndicators,
     CarouselCaption,
-    Container
+    Container,
+    Col
 } from 'reactstrap';
 
 
@@ -73,7 +74,7 @@ class Services extends Component {
                     onExited={this.onExited}
                     key={item.src}
                 >
-                    <img src={item.src} alt={item.altText} className="rounded"/>
+                    <img src={item.src} alt={item.altText} className="rounded" />
                     <CarouselCaption captionText={item.caption} captionHeader={item.caption} />
                 </CarouselItem>
             );
@@ -82,20 +83,22 @@ class Services extends Component {
         return (
             <div>
                 <Container fluid="true" className="py-5" id="servicios">
-                    .<div className="container text-center mb-5">
-                        <h3 className="display-4">Nuestros Servicios</h3>
-                    </div>
-                    <Carousel
-                        activeIndex={activeIndex}
-                        next={this.next}
-                        previous={this.previous}
-                        className="w-75"
-                    >
-                        <CarouselIndicators items={items} activeIndex={activeIndex} onClickHandler={this.goToIndex} />
-                        {slides}
-                        <CarouselControl direction='prev' directionText='Previous' onClickHandler={this.previous} />
-                        <CarouselControl direction='next' directionText='Next' onClickHandler={this.next} />
-                    </Carousel>
+                    <Col>
+                        <Container className="container text-center mb-5">
+                            <h3 className="display-4">Nuestros Servicios</h3>
+                        </Container>
+                        <Carousel
+                            activeIndex={activeIndex}
+                            next={this.next}
+                            previous={this.previous}
+                            className="w-75"
+                        >
+                            <CarouselIndicators items={items} activeIndex={activeIndex} onClickHandler={this.goToIndex} />
+                            {slides}
+                            <CarouselControl direction='prev' directionText='Previous' onClickHandler={this.previous} />
+                            <CarouselControl direction='next' directionText='Next' onClickHandler={this.next} />
+                        </Carousel>
+                    </Col>
                 </Container>
             </div>
         );
