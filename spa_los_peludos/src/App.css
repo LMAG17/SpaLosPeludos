@@ -11,6 +11,11 @@ body{
   background-color: #DAECF6;
   width: 100%;
 }
+
+.App-footer{
+  background-color: #DAECF6;
+  width: 100%;
+}
 .navTop{
   color: #3A3CAD;
   background-color: transparent;
@@ -27,12 +32,14 @@ body{
 text-align: center;
 }
 #titulo-top{
+  margin-right: auto;
   font-family: cursiva;
   color: #5D5EB0;
   font-size: 32px;
   font-weight: bold;
 }
 #titulo-down{
+  margin-right: auto;
   font-family: cursiva;
   color: #fff;
   font-size: 28px;
@@ -68,7 +75,7 @@ img{
 #servicios{
   /*background-image:
   linear-gradient(rgba(93, 94, 176,0.5), rgba(93, 94, 176,0.5)), url(https://wallpaperaccess.com/full/1403604.jpg);*/
-  background-color: #3A3CAD;
+  background-color: #DAECF6;
   background-repeat: no-repeat;
   background-size: cover;
 }

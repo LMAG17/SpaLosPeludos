@@ -5,6 +5,8 @@ import Banner from './banner'
 import About from './about'
 import Services from './services';
 import Footer from './footer';
+import { Form } from 'reactstrap';
+import FormContact from './form';
 function App() {
   return (
     <div className="App" id="home">
@@ -14,7 +16,10 @@ function App() {
       </header>
       <About />
       <Services />
-      <Footer/>
+      <FormContact/>
+      <header className="App-footer">
+        <Footer />
+      </header>
     </div>
   );
 }
