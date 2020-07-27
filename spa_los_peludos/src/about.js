@@ -4,7 +4,8 @@ class Banner extends Component {
     render() {
         return (
             <div id="about">
-                <Container fluid="true" className="pt-5 pb-5 w-75">
+                <Row className="h-10 overflow-hidden m-0 p-0" ><svg viewBox="0 0 500 90" preserveAspectRatio="none" className="h-100 w-100"><path d="M-11.84,14.30 C301.35,95.22 295.14,-61.67 524.26,38.97 L531.59,-32.06 L0.00,0.00 Z" className="stroke-none" id="svg-bg"></path></svg></Row>
+                <Container fluid="true" className="mt-0 pt-0 pb-5 w-75">
                     <Row className="p-0 m-0 w-100" >
                         <Col xs="12" sm="12" md="6">
                             <Card className="">

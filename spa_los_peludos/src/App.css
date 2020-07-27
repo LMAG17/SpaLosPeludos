@@ -117,3 +117,8 @@ li{
 a{
   text-decoration: none;
 }
+#svg-bg{
+  height: 50%;
+  stroke: none;
+  fill: #DAECF6;
+}

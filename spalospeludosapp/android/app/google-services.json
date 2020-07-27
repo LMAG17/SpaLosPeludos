@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "267997855255",
+    "firebase_url": "https://spalospeludos.firebaseio.com",
+    "project_id": "spalospeludos",
+    "storage_bucket": "spalospeludos.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:267997855255:android:9200182ab6457b8a2a6652",
+        "android_client_info": {
+          "package_name": "com.example.spalospeludosapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "267997855255-1afoj6ugs0kkm57o72n93gu8jusvcfm7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDKp5HDuEDe9ciJ96NDCNjdt-DiCRHGVV0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "267997855255-1afoj6ugs0kkm57o72n93gu8jusvcfm7.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "267997855255-njecbnj39uvf8sp42pi3bp1m2o9e8or3.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.spalospeludosapp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
