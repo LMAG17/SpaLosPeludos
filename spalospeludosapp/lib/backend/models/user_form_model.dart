@@ -3,41 +3,18 @@ import 'dart:convert';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class UserForm {
-  UserForm({
-    this.id,
-    this.address,
-    this.phone,
-    this.name,
-    this.breed,
-    this.email,
-    this.pet,
-  });
+  UserForm({this.id, this.data});
 
   final String id;
-  final String address;
-  final int phone;
-  final String name;
-  final String breed;
-  final String email;
-  final String pet;
+  final DataUserForm data;
 
   UserForm copyWith({
-  final String id,
-    String address,
-    int phone,
-    String name,
-    String breed,
-    String email,
-    String pet,
+    String id,
+    String data,
   }) =>
       UserForm(
         id: id ?? this.id,
-        address: address ?? this.address,
-        phone: phone ?? this.phone,
-        name: name ?? this.name,
-        breed: breed ?? this.breed,
-        email: email ?? this.email,
-        pet: pet ?? this.pet,
+        data: data ?? this.data,
       );
 
   factory UserForm.fromJson(String str) => UserForm.fromMap(json.decode(str));
@@ -46,6 +23,69 @@ class UserForm {
 
   factory UserForm.fromMap(Map<String, dynamic> json) => UserForm(
         id: json["id"],
+        data: json["data"],
+      );
+
+  Map<String, dynamic> toMap() => {
+        "id": id,
+        "data": data,
+      };
+
+  static UserForm fromSnapshot(DocumentSnapshot snap) {
+    return UserForm(
+      id: snap.data['id'],
+      data: snap.data['data'],
+    );
+  }
+
+  Map<String, Object> toDocument() {
+    return {
+      "id": id,
+      "data": data,
+    };
+  }
+}
+
+class DataUserForm {
+  DataUserForm({
+    this.address,
+    this.phone,
+    this.name,
+    this.breed,
+    this.email,
+    this.pet,
+  });
+
+  final String address;
+  final int phone;
+  final String name;
+  final String breed;
+  final String email;
+  final String pet;
+
+  DataUserForm copyWith({
+    final String address,
+    int phone,
+    String name,
+    String breed,
+    String email,
+    String pet,
+  }) =>
+      DataUserForm(
+        address: address ?? this.address,
+        phone: phone ?? this.phone,
+        name: name ?? this.name,
+        breed: breed ?? this.breed,
+        email: email ?? this.email,
+        pet: pet ?? this.pet,
+      );
+
+  factory DataUserForm.fromJson(String str) =>
+      DataUserForm.fromMap(json.decode(str));
+
+  String toJson() => json.encode(toMap());
+
+  factory DataUserForm.fromMap(Map<String, dynamic> json) => DataUserForm(
         address: json["address"],
         phone: json["phone"],
         name: json["name"],
@@ -55,7 +95,6 @@ class UserForm {
       );
 
   Map<String, dynamic> toMap() => {
-        "id": id,
         "address": address,
         "phone": phone,
         "name": name,
@@ -64,9 +103,8 @@ class UserForm {
         "pet": pet,
       };
 
-  static UserForm fromSnapshot(DocumentSnapshot snap) {
-    return UserForm(
-      id: snap.data['id'],
+  static DataUserForm fromSnapshot(DocumentSnapshot snap) {
+    return DataUserForm(
       address: snap.data['address'],
       phone: snap.data['phone'],
       name: snap.data['name'],
@@ -78,7 +116,6 @@ class UserForm {
 
   Map<String, Object> toDocument() {
     return {
-      "id": id,
       "address": address,
       "phone": phone,
       "name": name,
@@ -87,5 +124,4 @@ class UserForm {
       "pet": pet,
     };
   }
-  
 }

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:spalospeludosapp/backend/bloc/user_form_bloc/bloc.dart';
-import 'package:intl/date_symbol_data_local.dart';
 
 class ClientFormsPage extends StatefulWidget {
   ClientFormsPage({Key key}) : super(key: key);
@@ -25,7 +24,6 @@ class _ClientFormsPageState extends State<ClientFormsPage> {
       child: BlocBuilder<UserFormBloc, UserFormState>(
         builder: (context, state) {
           if (state is UserFormLoading) {
-            BlocProvider.of<UserFormBloc>(context).add(LoadUserForm());
             return Center(
               child: CircularProgressIndicator(),
             );
@@ -37,13 +35,13 @@ class _ClientFormsPageState extends State<ClientFormsPage> {
                   return Card(
                     child: ListTile(
                       leading: Icon(Icons.pets),
-                      title: Text(state.userForms[index].pet),
-                      subtitle: Text(state.userForms[index].breed),
+                      title: Text(state.userForms[index].data.pet),
+                      subtitle: Text(state.userForms[index].data.breed),
                       trailing: Column(
                         mainAxisSize: MainAxisSize.min,
                         children: <Widget>[
-                          Text(state.userForms[index].name),
-                          Text(state.userForms[index].phone.toString())
+                          Text(state.userForms[index].data.name),
+                          Text(state.userForms[index].data.phone.toString())
                         ],
                       ),
                       onTap: () => BlocProvider.of<UserFormBloc>(context)
@@ -73,42 +71,42 @@ class _ClientFormsPageState extends State<ClientFormsPage> {
                         child: ListTile(
                           leading: Icon(Icons.pets),
                           title: Text("Peludito: "),
-                          subtitle: Text("${state.userForm.pet}"),
+                          subtitle: Text("${state.userForm.data.pet}"),
                         ),
                       ),
                       Card(
                         child: ListTile(
                           leading: Icon(Icons.radio_button_unchecked),
                           title: Text("Raza: "),
-                          subtitle: Text("${state.userForm.breed}"),
+                          subtitle: Text("${state.userForm.data.breed}"),
                         ),
                       ),
                       Card(
                         child: ListTile(
                           leading: Icon(Icons.person),
                           title: Text("Dueño: "),
-                          subtitle: Text("${state.userForm.name}"),
+                          subtitle: Text("${state.userForm.data.name}"),
                         ),
                       ),
                       Card(
                         child: ListTile(
                           leading: Icon(Icons.phone_in_talk),
                           title: Text("Telefono: "),
-                          subtitle: Text("${state.userForm.phone}"),
+                          subtitle: Text("${state.userForm.data.phone}"),
                         ),
                       ),
                       Card(
                         child: ListTile(
                           leading: Icon(Icons.location_on),
                           title: Text("Direccion: "),
-                          subtitle: Text("${state.userForm.address}"),
+                          subtitle: Text("${state.userForm.data.address}"),
                         ),
                       ),
                       Card(
                         child: ListTile(
                           leading: Icon(Icons.email),
                           title: Text("Correo Electronico: "),
-                          subtitle: Text("${state.userForm.email}"),
+                          subtitle: Text("${state.userForm.data.email}"),
                         ),
                       ),
                       Row(

@@ -10,17 +10,19 @@ class UserFormRepository {
   Future<void> addNewAgend(
       UserForm userForm, DateTime agendedDateTime, String observations) async {
     var agendedDate = AgendedDate(
-      name: userForm.name,
-      phone: userForm.phone,
-      address: userForm.address,
-      email: userForm.email,
-      pet: userForm.pet,
-      breed: userForm.breed,
-      observations: observations,
-      date: agendedDateTime.toString(),
-    );
-    await dbAgendReference.add(agendedDate.toDocument()).then((value) {
-       dbReference.document(userForm.id).delete();
+        id: userForm.id,
+        data: DataAgendedDate(
+          name: userForm.data.name,
+          phone: userForm.data.phone,
+          address: userForm.data.address,
+          email: userForm.data.email,
+          pet: userForm.data.pet,
+          breed: userForm.data.breed,
+          observations: observations,
+          date: agendedDateTime.toString(),
+        ));
+    await dbAgendReference.add(agendedDate.data.toDocument()).then((value) {
+      dbReference.document(userForm.id).delete();
     });
     print("Action addNewUserForm");
   }
@@ -33,14 +35,14 @@ class UserFormRepository {
     print("trata de pegarle al firebase");
     return dbReference.snapshots().map((snapshot) {
       return snapshot.documents
-          .map((doc) => UserForm(
+          .map(
+            (doc) => UserForm(
               id: doc.documentID,
-              name: doc.data["name"],
-              phone: doc.data["phone"],
-              email: doc.data["email"],
-              address: doc.data["address"],
-              pet: doc.data["pet"],
-              breed: doc.data["breed"]))
+              data: DataUserForm.fromMap(
+                doc.data,
+              ),
+            ),
+          )
           .toList();
     });
   }

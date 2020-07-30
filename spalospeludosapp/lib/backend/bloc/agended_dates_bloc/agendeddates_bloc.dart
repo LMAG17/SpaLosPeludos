@@ -17,6 +17,8 @@ class AgendedDatesBloc extends Bloc<AgendedDatesEvent, AgendedDatesState> {
   Stream<AgendedDatesState> mapEventToState(AgendedDatesEvent event) async* {
     if (event is LoadAgendedDates) {
       yield* _mapLoadAgendedDatesToState();
+    } else if (event is CompleteDate) {
+      yield* _maCompleteDateToState(event);
     } else if (event is AddAgendedDates) {
       yield* _mapAddAgendedDatesToState(event);
     } else if (event is LoadAgendDetail) {
@@ -33,27 +35,38 @@ class AgendedDatesBloc extends Bloc<AgendedDatesEvent, AgendedDatesState> {
   Stream<AgendedDatesState> _mapLoadAgendedDatesToState() async* {
     _agendedDatesSubscription?.cancel();
     _agendedDatesSubscription = _agendedDatesRepository.agendedDates().listen(
-          (agendedDates) {
-            print(agendedDates.toString());
-            add(AgendedDatesUpdated(agendedDates));
-          },
-        );
+      (agendedDates) {
+        print(agendedDates.toString());
+        add(AgendedDatesUpdated(agendedDates));
+      },
+    );
   }
 
-  Stream<AgendedDatesState> _mapAddAgendedDatesToState(AddAgendedDates event) async* {
+  Stream<AgendedDatesState> _mapAddAgendedDatesToState(
+      AddAgendedDates event) async* {
     _agendedDatesRepository.addNewAgendedDates(event.agendedDates);
   }
 
-  Stream<AgendedDatesState> _mapUpdateAgendedDatesToState(UpdateAgendedDates event) async* {
+  Stream<AgendedDatesState> _maCompleteDateToState(CompleteDate event) async* {
+    yield AgendedDatesLoading();
+    try {
+      _agendedDatesRepository.completeDate(event.agend,event.comments,event.total);
+    } catch (e) {
+    }
+  }
+
+  Stream<AgendedDatesState> _mapUpdateAgendedDatesToState(
+      UpdateAgendedDates event) async* {
     _agendedDatesRepository.updateAgendedDates(event.updatedAgendedDates);
   }
 
-  Stream<AgendedDatesState> _mapDeleteAgendedDatesToState(DeleteAgendedDates event) async* {
+  Stream<AgendedDatesState> _mapDeleteAgendedDatesToState(
+      DeleteAgendedDates event) async* {
     _agendedDatesRepository.deleteAgendedDates(event.agendedDates);
   }
 
-
-  Stream<AgendedDatesState> _mapAgendedDatesUpdateToState(AgendedDatesUpdated event) async* {
+  Stream<AgendedDatesState> _mapAgendedDatesUpdateToState(
+      AgendedDatesUpdated event) async* {
     yield AgendedDatesLoaded(event.agendedDatess);
   }
 

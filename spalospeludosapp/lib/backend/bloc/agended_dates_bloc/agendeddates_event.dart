@@ -1,4 +1,5 @@
 
+import 'package:flutter/cupertino.dart';
 import 'package:spalospeludosapp/backend/models/agended_date_model.dart';
 
 abstract class AgendedDatesEvent {
@@ -19,6 +20,19 @@ class AddAgendedDates extends AgendedDatesEvent {
 
   @override
   String toString() => 'AddAgendedDates { agendedDates: $agendedDates }';
+}
+
+class CompleteDate extends AgendedDatesEvent {
+  final AgendedDate agend;
+  final String comments;
+  final String total;
+  const CompleteDate({@required this.agend, @required this.comments, @required this.total});
+
+  @override
+  List<Object> get props => [agend];
+
+  @override
+  String toString() => 'CompleteDate { agend: $agend }';
 }
 
 class UpdateAgendedDates extends AgendedDatesEvent {

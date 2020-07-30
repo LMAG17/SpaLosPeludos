@@ -8,5 +8,8 @@ class FirestoreServieInteractor {
     if (_docs.documents.isNotEmpty) {
       return _docs.documents.map((e) => UserForm.fromMap(e.data)).toList();
     }
+    else{
+      return [];
+    }
   }
 }
